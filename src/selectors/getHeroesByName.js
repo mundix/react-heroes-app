@@ -4,7 +4,7 @@ import { heroes } from '../data/heroes';
 export const getHeroesByName = ( name = '' ) => {
 
     if(name === '') {
-        return '';
+        return [];
     }
 
     name = name.toLocaleLowerCase();

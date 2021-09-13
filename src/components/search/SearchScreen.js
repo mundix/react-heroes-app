@@ -83,8 +83,8 @@ export const SearchScreen = ({ history }) => {
                     }
                     {
                         // Ho puedes usar  { }  en las funciones de array ex map( obj => (...))
+                        (q !== '' && heroesFiltered.length > 0) &&
                         heroesFiltered.map(hero => (
-
                             <HeroCard className='col-2 mt-5'
                                 key={hero.id}
                                 {...hero}
