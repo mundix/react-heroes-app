@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { getHeroByPublisher } from '../../selectors/getHeroesByPublisher';
 import { HeroCard } from './HeroCard';
 
 
 export const HeroList = ({publisher}) => {
 
-    const heroes = getHeroByPublisher( publisher );
+    // esto se deberia llamar si el publicar cambia, es una optimizacion, y unamanera de hacerlo 
+    const heroes = useMemo(() => getHeroByPublisher(publisher), [ publisher ]);
+    // const heroes = getHeroByPublisher( publisher );
     return (
         <div className='card-columns'>
             {
