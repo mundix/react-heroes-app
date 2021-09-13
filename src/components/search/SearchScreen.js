@@ -24,6 +24,7 @@ export const SearchScreen = ({ history }) => {
 
     //Memorizamos la busqueda, solo cambia cuando el query de la url 'q' cambie,
     // si lo pongo con el input query , se generan consoles o eventos. 
+    //Se envia un call back () => functionName() with arg if it have. 
     const heroesFiltered = useMemo(() => getHeroesByName(q), [q]);
     // const heroesFiltered = getHeroesByName(query);
 
