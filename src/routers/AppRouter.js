@@ -4,23 +4,22 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link
 } from "react-router-dom";
-import { Navbar } from '../componentes/ui/NavBar';
-import { LoginScreen } from '../componentes/login/LoginScreen';
-import { Marvel } from '../componentes/marvel/Marvel';
+
+import { LoginScreen } from '../components/login/LoginScreen';
+import { DashboardRoutes } from './DashboardRoutes';
 
 
 export const AppRouter = () => {
     return (
         <Router>
             <div>
-
-                <Navbar />
-
+                {/* El NavBar ya no hace falta */}
+                {/* <Navbar /> */}
                 <Switch>
                     <Route exact path="/login" component={LoginScreen} />
-                    <Route exact path="/" component={Marvel} />
+                    {/* Se removio el exact para que funcione como por defecto.  */}
+                    <Route  path="/" component={ DashboardRoutes } />
                 </Switch>
             </div>
         </Router>
