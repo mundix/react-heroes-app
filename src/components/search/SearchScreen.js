@@ -1,20 +1,34 @@
-import React from 'react'
-import { heroes } from '../../data/heroes'
+import React from 'react';
+import queryString from 'query-string';
+import { heroes } from '../../data/heroes';
 import { HeroCard } from '../heroes/HeroCard';
 import { useForm } from '../../hooks/useForm';
+import { useLocation } from 'react-router';
 
-export const SearchScreen = () => {
+export const SearchScreen = ({history}) => {
 
-    const heroesFiltered = heroes;
+    const location = useLocation();
+
+    const { q } = queryString.parse(location.search);
+
+    // Para poder trabajar con el query String, se recomienda un paquete
+    // https://www.npmjs.com/package/query-string
+
 
     const [formValues, handleInputChange] = useForm({
-        query: '',
+        // query: '',
+        // Voy asignar el query 'q' a mi valor iniciarl del formulario
+        query: q,
     });
 
     const {query} = formValues;
 
+    const heroesFiltered = heroes;
+
+
     const handleSearch = (e) => {
         e.preventDefault();
+        history.push(`?q=${query}`);
         console.log(formValues);
     };
     
