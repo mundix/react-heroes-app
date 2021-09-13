@@ -9,7 +9,7 @@ export const HeroList = ({publisher}) => {
     const heroes = useMemo(() => getHeroByPublisher(publisher), [ publisher ]);
     // const heroes = getHeroByPublisher( publisher );
     return (
-        <div className='card-columns'>
+        <div className='card-columns animate__animated animate__fadeIn'>
             {
                 // El componete cambio no es un high order component, os ea que no cierra, si no
                 // Que el se cierra a si mismo. , cambiamos el LI por el HeroCard  y le pasamos
