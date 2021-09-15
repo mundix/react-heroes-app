@@ -1,10 +1,24 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { AuthContext } from '../../auth/AuthContext';
+import { types } from '../../types/types';
 
 export const LoginScreen = ({history}) => {
 
+    const { dispatch } = useContext(AuthContext); //primero es incluir el useContext, 
+
     const handleLogin = () =>{
-        history.push('/'); 
-        // history.replace('/');
+        // history.push('/'); 
+        // Tarea, extraer del context, la function dispatch  y la function dispatch debe mandar a llmar un action que tenga este tipo, 
+        // Enel objeto en el payload debe eviar el nombre 
+        // al dispatch se le pasan dos argumentos el type y el payload, el payload siempre es un objeto { param: '', param2: '' }
+        dispatch({
+            type: types.login,
+            payload: {
+                name:'Edmundo'
+            }
+        });
+        history.replace('/');
+
     }
 
     return (

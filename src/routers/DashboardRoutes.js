@@ -9,6 +9,10 @@ import { SearchScreen } from '../components/search/SearchScreen';
 export const DashboardRoutes = () => {
     return (
         <>
+            {/* El NavBar no recibe el history por que o esta dentro del swithc, pero se puede pasar atraves de props */}
+            {/* Pero no es lo conveniente */}
+            {/* <Navbar history={history}/> */}
+            {/* Usando React Route Dom se puede usar el useHistory */}
             <Navbar />
             <div className="container mt-3">
                 <Switch>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import {
     BrowserRouter as Router,
@@ -8,9 +8,14 @@ import {
 
 import { LoginScreen } from '../components/login/LoginScreen';
 import { DashboardRoutes } from './DashboardRoutes';
+import { PrivateRoute } from './PrivateRoute';
+import { AuthContext } from '../auth/AuthContext';
 
 
 export const AppRouter = () => {
+
+    const {user} = useContext(AuthContext); //Se extrae del reducer el user { name, logged } , para enviarlo atravess del PrivateRoute
+
     return (
         <Router>
             <div>
@@ -18,8 +23,15 @@ export const AppRouter = () => {
                 {/* <Navbar /> */}
                 <Switch>
                     <Route exact path="/login" component={LoginScreen} />
+                    
                     {/* Se removio el exact para que funcione como por defecto.  */}
-                    <Route  path="/" component={ DashboardRoutes } />
+                    {/* Esta es la ruta que quiero proteger, lo cambio por el prive route */}
+                    {/* <Route  path="/" component={ DashboardRoutes } /> */}
+                    <PrivateRoute  
+                        path="/" 
+                        isAuthenticated={user.logged}
+                        component={ DashboardRoutes } 
+                        />
                 </Switch>
             </div>
         </Router>
